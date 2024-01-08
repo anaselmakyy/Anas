@@ -1,13 +1,514 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
+  /* background-image: url('/public/HOME.png'); */
+  background-color: #000;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    
+}
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid rgb(219, 21, 21); /* Blue */
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top:42%;
+  left:48%
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card{
+  background-color: #121212;
+  border-radius: 25px;
+  color: #f3f3f3;
+}
+
+
+.typing-animation::before {
+  content: "Hi, I'm Ayoub El Ouarzazi, a 21-year-old Cyber Security Specialist dedicated";
+  display: block;
+  overflow: hidden;
+  border-right: .15em solid rgb(255, 0, 0);
+  white-space: nowrap;
+  animation: typing 5s steps(80, end) forwards;
+}
+
+.typing-animation::after {
+  content: "to safeguarding digital landscapes and ensuring robust online security";
+  display: block;
+  overflow: hidden;
+  border-right: .15em solid rgb(255, 0, 0);
+  white-space: nowrap;
+  animation: typing 5s steps(80, end) forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.aboutcard{
+  background-color: black;
+}
+@media only screen and (max-width: 900px) {
+  body {
+    background-size: cover;
+  }
+  .icons{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    text-align: center  ;
+  }
+  .aboutbg {
+    background-color: #121212; 
+    padding: 10px;
+    border-radius: 10px; 
+    color: #f3f3f3; 
+  }
+  
+  header{
+    position:static !important;
+  }
+  .parag{
+  display: none;
+}
+  .marque{
+    display: none;
+
+  }
+  .ball{
+    width: 10%;
+    height: 10%;
+  }
+  .skills{
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center;
+  }
+  .mypic{
+    display: none;
+  }
+  .pic{
+    display: none;
+  }
+  .skills{
+    transition: none !important;
+    transform: none !important;;
+
+  }
+  .main{
+    transition: none !important;
+    transform: none !important;;
+
+  }
+  .aboutcard{
+    transition: none !important;
+    transform: none !important;;
+    /* transition: "transform 0.3s ease-in-out", */
+  }
+  .main{
+    margin-top: 51%;
+
+  }
+  .home{
+    margin: 0;
+  }
+  .nav{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+  }
+  .loader {
+    top: 30%;
+    left: 40%;
+  }
+
+  header nav {
+    justify-content: center;
+    padding: 2%;
+  }
+
+  .main h1 {
+    font-size: 4rem;
+    margin-top: 8%;
+  }
+
+  .main p {
+    font-size: 1.2rem;
+  }
+
+  .main .flex p {
+    margin-right: 15%;
+  }
+
+  .main img {
+    left: 65%;
+    width: 50%;
+  }
+
+  .main .card p {
+    margin-right: 30%;
+  }
+
+  .main .flex img {
+    left: 69%;
+  }
+
+  .aboutcard {
+    margin-top: 2%;
+  }
+
+  .aboutcard h1 {
+    font-size: 4rem;
+  }
+
+  .aboutcard h1,
+  .aboutcard .text-white {
+    text-align: center;
+  }
+
+  .aboutcard img {
+    top: 14%;
+    left: 60%;
+    width: 35%;
+  }
+
+  .skills h1 {
+    margin-top: 1%;
+  }
+
+  .skills .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    margin-top: 15%;
+  }
+
+  footer {
+    margin-top: 15%;
+  }
+
+  footer h1 {
+    font-size: 2.5rem;
+  }
+
+  footer .flex img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5%;
+  }
+
+  footer hr {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  footer .text-center p,
+  footer .text-center h1 {
+    font-size: 1rem;
+  }
+  footer {
+    margin-top: 15%;
+    padding: 4%;
+  }
+
+  footer h1 {
+    font-size: 3rem;
+  }
+
+  footer .flex {
+    flex-direction: column;
+  }
+
+  footer .flex .items-center {
+    margin-bottom: 4%;
+  }
+
+  footer .flex img {
+    margin-bottom: 2%;
+  }
+
+  footer .flex p {
+    text-align: center;
+  }
+
+  footer hr {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  footer .text-center {
+    margin-top: 8%;
+  }
+
+  footer .text-center h1 {
+    font-size: 1.5rem;
+  }
+  .main{
+    text-align: center;
+    align-items: center;
+  }
+
+    .field-card {
+      margin: 0;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      transform: translateX(4%) !important;
+    }
+    .aboutbg{
+      justify-content: center !important;
+      text-align: center !important;
+      align-items: center !important;
+      /* transform: translateX(4%) !important; */
+      
+    }
+  .mytext{
+    transform: translateX(-2%) !important;
+
+  }
+  
+}
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    background-size: cover;
+  }
+  .home{
+    margin: 0;
+  }
+  .skills{
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center;
+  }
+  .mypic{
+    display: none;
+  }
+  
+  header nav {
+    justify-content: center;
+    padding: 2%;
+  }
+  .pic{
+    display: none;
+  }
+  .skills{
+    transition: none !important;
+    transform: none !important;;
+
+  }
+  .main{
+    transition: none !important;
+    transform: none !important;;
+
+  }
+  .aboutcard{
+    transition: none !important;
+    transform: none !important;;
+    /* transition: "transform 0.3s ease-in-out", */
+  }
+  .nav{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+  }
+  .loader {
+    top: 30%;
+    left: 40%;
+  }
+  .icons{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    text-align: center  ;
+  }
+  .aboutbg {
+    background-color: #121212; 
+    padding: 10px;
+    border-radius: 10px; 
+    color: #f3f3f3; 
+  }
+  
+  header{
+    position:static !important;
+  }
+  .parag{
+  display: none;
+}
+  .marque{
+    display: none;
+
+  }
+  .loader {
+    top: 30%;
+    left: 40%;
+  }
+
+  header nav {
+    justify-content: center;
+    padding: 2%;
+  }
+
+  .main h1 {
+    font-size: 4rem;
+    margin-top: 8%;
+  }
+
+  .main p {
+    font-size: 1.2rem;
+  }
+
+  .main .flex p {
+    margin-right: 15%;
+  }
+
+  .main img {
+    left: 65%;
+    width: 50%;
+  }
+
+  .main .card p {
+    margin-right: 30%;
+  }
+
+  .main .flex img {
+    left: 69%;
+  }
+
+  .aboutcard {
+    margin-top: 2%;
+  }
+
+  .aboutcard h1 {
+    font-size: 4rem;
+  }
+
+  .aboutcard h1,
+  .aboutcard .text-white {
+    text-align: center;
+  }
+
+  .aboutcard img {
+    top: 14%;
+    left: 60%;
+    width: 35%;
+  }
+
+  .skills h1 {
+    margin-top: 1%;
+  }
+
+  .skills .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    margin-top: 15%;
+  }
+
+  footer {
+    margin-top: 15%;
+  }
+
+  footer h1 {
+    font-size: 2.5rem;
+  }
+
+  footer .flex img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5%;
+  }
+
+  footer hr {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  footer .text-center p,
+  footer .text-center h1 {
+    font-size: 1rem;
+  }
+  footer {
+    margin-top: 15%;
+    padding: 4%;
+  }
+
+  footer h1 {
+    font-size: 3rem;
+  }
+
+  footer .flex {
+    flex-direction: column;
+  }
+
+  footer .flex .items-center {
+    margin-bottom: 4%;
+  }
+
+  footer .flex img {
+    margin-bottom: 2%;
+  }
+
+  footer .flex p {
+    text-align: center;
+  }
+
+  footer hr {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  footer .text-center {
+    margin-top: 8%;
+  }
+
+  footer .text-center h1 {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1999px){
+  .mypic{
+    display: none;
+  }
+  .skills{
+    transition: none !important;git init
+    transform: none !important;;
+
+  }
 }
