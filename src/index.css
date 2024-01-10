@@ -17,7 +17,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden !important;
 }
-
+w
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -31,8 +31,10 @@ code {
   height: 90px;
   animation: spin 2s linear infinite;
   position: absolute;
-  top:42%;
-  left:48%
+  top:50%;
+  left: 48%;
+  
+  
 }
 
 @keyframes spin {
@@ -54,6 +56,7 @@ code {
   border-right: .15em solid rgb(255, 0, 0);
   white-space: nowrap;
   animation: typing 5s steps(80, end) forwards;
+  
 }
 
 .typing-animation::after {
@@ -91,10 +94,8 @@ code {
 
   }
   
-  .loader{
-    position:absolute ;
-transform: translateY(130%) !important;
-  }
+
+  
   .main-child{
     justify-content: center;
   }
@@ -102,6 +103,7 @@ transform: translateY(130%) !important;
     position: static;
 
     transform: translateX(10%);
+
   }
   .about-child{
     flex-wrap: wrap;
@@ -443,10 +445,7 @@ transform: translateY(130%) !important;
     text-align: center;
     margin: 0;
   }
-  .loader {
-    top: 30%;
-    left: 40%;
-  }
+
   .icons{
     display: flex !important;
     flex-direction: row !important;
@@ -470,11 +469,6 @@ transform: translateY(130%) !important;
     display: none;
 
   }
-  .loader {
-    top: 30%;
-    left: 40%;
-  }
-
   header nav {
     justify-content: center;
     padding: 2%;
@@ -611,6 +605,10 @@ transform: translateY(130%) !important;
   .skills{
     transition: none !important;
     transform: none !important;;
+  }
+  #about{
+    /* margin-bottom: 15%; */
+    margin-top: 10%;
 
   }
   .foot{
