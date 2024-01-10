@@ -9,62 +9,103 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [aboutScroll, setAbout] = useState(0);
   const [skillsScroll, setskills] = useState(0);
+  const [opacity,setOpacity] = useState(0)
+
+  useEffect(() => {
+    const handleAboutScroll = () => {
+      const aboutLinks = document.getElementsByClassName("aboutLink");
+  
+      const numberheight = window.scrollY;
+  
+      if (numberheight >= 370 && numberheight < 1400) {
+        setAbout(2000 - 2000);
+        setOpacity(1);
+  
+        for (let i = 0; i < aboutLinks.length; i++) {
+          aboutLinks[i].style.color = "red";
+        
+        }
+      } else {
+        setAbout(2000);
+        setOpacity(0);
+  
+        for (let i = 0; i < aboutLinks.length; i++) {
+          aboutLinks[i].style.color = "white";
+        }
+      }
+    };
+  
+    handleAboutScroll();
+  
+
+    window.addEventListener("scroll", handleAboutScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleAboutScroll);
+    };
+  }, [window.scrollY]);
+  
+  useEffect(()=>{
+    const skillsLinks = document.getElementsByClassName("skillsLink");
+    const numberheight = window.scrollY
+    if(numberheight>=850 && numberheight<2050){    
+        setskills(2000-2000)
+
+        for (let i = 0; i < skillsLinks.length; i++) {
+          skillsLinks[i].style.color = "red";
+        
+        }
+  }
+  else{
+    setskills(2000)
+    for (let i = 0; i < skillsLinks.length; i++) {
+      skillsLinks[i].style.color = "white";
+    }
+  }
+  },[window.scrollY])
+
 
   useEffect(() => {
     const handleScroll = () => {
-      // console.log(window.scrollY);
-      setScrollPos(window.scrollY);
+      const numberheight = window.scrollY
+      if(numberheight>=0 && numberheight<410){    
+          setScrollPos(2000-2000)
+          
+          }
+    
+    else{
+      setScrollPos(2000)
     };
+  }
 
-    const handleAboutScroll = () => {
-      const numberheight = window.scrollY;
-      if (numberheight <= 0) {
-        setAbout(2000);
-      } else if (numberheight >= 150 && numberheight < 1200) {
-        setAbout(window.scrollY * 0.01); // Adjust the scroll speed as needed
-      } else {
-        setAbout(2000);
-      }
-    };
-    const handleSkillsScroll = () => {
-      const numberheight = window.scrollY;
-      if (numberheight <= 0) {
-        setskills(2000);
-      } else if (numberheight >= 800 && numberheight < 1700) {
-        setskills(window.scrollY * 0.01); // Adjust the scroll speed as needed
-      } else {
-        setskills(2000);
-      }
-    };
+
+
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("scroll", handleAboutScroll);
-    window.addEventListener("scroll", handleSkillsScroll);
-    // Simulate content loading with a delay (e.g., 2 seconds)
     const loadingTimeout = setTimeout(() => {
       setLoading(false);
     }, 2000);
+  
 
-    // Cleanup
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", handleAboutScroll);
-      window.removeEventListener("scroll", handleSkillsScroll);
       clearTimeout(loadingTimeout);
-    };
-  }, []);
+    ;}
+  },[]);
+
 
   const mainStyle = {
     transform: `translateX(${scrollPos * -1}px)`,
-    transition: "transform 0.3s ease-in-out",
+    transition: "transform 0.8s ease-in-out",
   };
 
   const aboutStyle = {
     transform: `translateX(${aboutScroll}px)`,
-    transition: "transform 0.3s ease-in-out",
+    transition: "transform 0.8s ease-in-out",
+    opacity:`${opacity}px`
   };
   const skillsStyle = {
     transform: `translateX(${skillsScroll}px)`,
-    transition: "transform 0.3s ease-in-out",
+    transition: "transform 0.8s ease-in-out",
   };
 
   const scrollToPexels = () => {
@@ -72,19 +113,10 @@ export default function App() {
     window.scrollTo({ top: pexelsPosition, behavior: "smooth" });
   };
 
-  // const positioncard = ()=>{
-  //   const valux = document.getElementById("mytext");
-  //   const value = valux.offsetLeft  
-  //   console.log(value);
-  //   // const fieldcard = ;
-  //   // document.getElementById("field").style.left = valux
-    
-  // }
-  // positioncard()
 
   return (
     <div>
-      {loading && <Loader />} {/* Show loader while content is loading */}
+      {loading && <Loader />} 
       {!loading && (
         <div>
           <header className="fixed top-0 w-full z-10 ">
@@ -95,53 +127,49 @@ export default function App() {
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className="text-neutral-50 text-3xl font-mono decoration-solid mr-[49%] cursor-pointer home"
+                  className="text-neutral-50 text-3xl font-mono decoration-solid mr-[49%] cursor-pointer  home"
                   onClick={scrollToPexels}
                 >
                   MY PORTFOLIO
                 </Link>
                 <Link
+                
                   to="about"
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className="text-neutral-50 text-3xl font-mono hover:underline decoration-solid mr-[4%] cursor-pointer"
+                  className="text-neutral-50 text-3xl  font-mono border-red-600 hover:border-b-4 decoration-solid mr-[4%] cursor-pointer  aboutLink"
                 >
                   ABOUT
                 </Link>
                 <Link
+                
                   to="skills"
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className="text-neutral-50 text-3xl font-mono hover:underline decoration-solid mr-[4%] cursor-pointer"
+                  className="text-neutral-50 text-3xl font-mono border-red-600  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer skillsLink"
                 >
                   SKILLS
                 </Link>
                 <Link
+                
                   to="contact"
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className="text-neutral-50 text-3xl font-mono hover:underline decoration-solid mr-[4%] cursor-pointer"
+                  className="text-neutral-50 text-3xl font-mono border-red-600  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer contactLink"
                 >
                   CONTACT
                 </Link>{" "}
                 <a
                   href="https://drive.google.com/file/d/1imQoZnbDIItiVCaLSUAEDnkgNVL44bdG/view"
-                  className="text-neutral-50 text-3xl font-mono hover:underline decoration-solid mr-[4%] cursor-pointer"
+                  className="text-neutral-50 text-3xl font-mono border-red-600  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer cvLink"
                 >
                   MY CV
                 </a>
               </nav>
-              <marquee
-                behavior="scroll"
-                direction="right"
-                loop
-                className="text-red-700  text-3xl font-mono marque"
-              >
-                ---------------------------------------------------------------------------------------------------------------
-              </marquee>
+
               <div></div>
             </div>
           </header>
@@ -156,36 +184,36 @@ export default function App() {
                   CYBER SECURITY SPECIALIST
                 </p>
               </div>
-              <div className="flex">
-                <p className="text-neutral-50 font-mono text-2xl ml-[9%] mt-[1%] mr-[30%] typing-animation parag"></p>
+              <div className="flex flex-row flex-wrap main-child">
+                <p className="text-neutral-50 font-mono text-2xl ml-[9%] mt-[1%]  typing-animation parag"></p>
                 <img
                   src="/pclogo.png"
                   alt=""
-                  className="absolute top-[19px] left-[69%] w-[35%] pic"
+                  className="absolute left-[75%] w-[25%] pic"
                 />
               </div>
             </div>
           </div>
-          <div className="mt-[5%]" id="about"></div>
+          <div className="mt-[2%]" id="about"></div>
           <div className="">
-            <div className="text-center about">
+            <div className="flex justify-center about">
               <h1 className="text-neutral-50 font-mono text-5xl mt-[15%] aboutbg">
                 ABOUT ME :
               </h1>
             </div>
             <div
-              className="  mt-[2%] ml-[2%] mr-[2%] rounded-lg main-about pb-[6%] pt-[1%]  aboutcard  hover:scale-105 hover:border-4 hover:border-red-700 hover:shadow-red"
+              className="  mt-[2%] ml-[2%] mr-[2%] rounded-lg main-about pb-[6%] pt-[1%]  aboutcard  "
               style={aboutStyle}
             >
-              <div className="absolute top-0 right-0 bg-red-700 rounded-bl-full w-40 h-40 ball" ></div>
-              <div className="mt-[3%] ml-[5%] ">
-                <h1 className="text-white font-mono text-5xl">Who am I?</h1>
-                <h1 className="text-white text-8xl mt-[1%]  font-mono">
+              {/* <div className="absolute top-0 right-0 bg-red-700 rounded-bl-full w-40 h-40 ball" ></div> */}
+              <div className="mt-[3%] ml-[3%] ">
+                <h1 className="text-white font-mono text-5xl nametitle">Who am I?</h1>
+                <h1 className="text-white text-8xl mt-[1%]  font-mono nametitle2">
                   EL OUARZAZI <br /> AYOUB
                 </h1>
                 <br />
-                <div className="">
-                  <p className="text-white font-mono text-2xl ">
+                <div className="flex flex-row about-child">
+                  <p className="text-white font-mono text-2xl nametitle3">
                     I'm Ayoub El Ouarzazi, a 21-year-old deeply passionate about
                     the cyber security domain. <br />
                     Every day, I dedicate myself to enhancing my skills in cyber
@@ -197,14 +225,14 @@ export default function App() {
                   <img
                     src="./pc.png"
                     alt="gkkg"
-                    className="absolute top-[14%] left-[72%] drop-shadow-xl w-[35%] mypic"
+                    className=" drop-shadow-xl  w-[35%] mypic"
                   />
                 </div>
               </div>
             </div>
           </div>
           <div id="skills" className="mt-[5%] mb-[5%]"></div>
-          <div className="mt-[15%] skills"  style={skillsStyle}>
+          <div className="mt-[15%] skills"  >
             <div className="text-center">
               <h1 className="text-neutral-50 font-mono text-5xl mt-[1%] ">
                 SKILLS
@@ -213,10 +241,11 @@ export default function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 cards">
               {skills.map((x) => (
                 <div
+                style={skillsStyle}
                   key={x.id}
-                  className="relative max-w-xs mx-auto overflow-hidden shadow-lg mb-4 bg-white card ml-[5%] transition-transform transform hover:scale-105 hover:border-2 hover:border-red-500 hover:shadow-red-900 mt-[15%] cursor-pointer"
+                  className="relative max-w-xs mx-auto overflow-hidden shadow-lg mb-4 bg-white card ml-[5%] transition-transform transform hover:scale-105 hover:border-2 hover:border-red-500 hover:shadow-red-900 mt-[15%] cursor-pointer skill-card"
                 >
-                  {/* Rounded red element in the top right corner */}
+                  
                   <div className="absolute top-0 right-0 bg-red-500 rounded-bl-full w-10 h-10"></div>
 
                   <div className="pl-[5%] pr-[5%] pt-[5%] pb-[5%]">
@@ -235,16 +264,16 @@ export default function App() {
             <div className="text-center mb-6">
               <h1 className="text-5xl font-bold">CONTACT :</h1>
             </div>
-            <div className="flex flex-row justify-around space-y-4">
-              <div className="flex items-center">
+            <div className="flex flex-row  justify-around space-y-4 foot">
+              <div className="flex items-center justify-center">
                 <img src="./phone.png" alt="phone" className="w-10 h-10 mr-4" />
                 <p className="font-bold text-xl">+212 681-163257</p>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <img src="./email.png" alt="email" className="w-10 h-10 mr-4" />
                 <p className="font-bold text-xl">ayoubelouarzazi1@gmail.com</p>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <img
                   src="./location.png"
                   alt="location"
@@ -271,7 +300,7 @@ export default function App() {
             <div className="text-center mt-10">
       <p className="text-neutral-400 text-lg">REALISED BY</p>
       <h1 className="text-white text-3xl font-bold"><a href="https://www.linkedin.com/in/anas-el-maky-360257262/">ANAS EL MAKY</a></h1>
-      <p>© 2024 ALL RIGHT RESERVED</p>
+      <p>© 2024 ALL RIGHTS RESERVED</p>
     </div>
             
           </footer>

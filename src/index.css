@@ -8,14 +8,14 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
+  max-width: 100% !important;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 code {
@@ -73,13 +73,48 @@ code {
     width: 100%;
   }
 }
-
+.loader{
+  position: absolute;
+  top:100%;
+  left:48%
+}
 .aboutcard{
   background-color: black;
 }
-@media only screen and (max-width: 900px) {
+.mypic{
+  margin-left: 20%;
+  transform: translateY(-40%);
+}
+@media only screen and (max-width: 600px) {
   body {
-    background-size: cover;
+    /* background-size: cover; */
+    overflow-x: hidden !important;
+    margin: 0;
+
+
+
+  }
+  .main-child{
+    justify-content: center;
+  }
+  .pic{
+    position: static;
+
+    transform: translateX(10%);
+  }
+  .about-child{
+    flex-wrap: wrap;
+  }
+  .skill-card{
+    transition: none !important;
+    transform: none !important;
+  }
+  #mytext{
+    font-size:50px ;
+    margin-bottom: 2%;
+  }
+    .nametitle{
+    font-size: 40px;
   }
   .icons{
     display: flex !important;
@@ -87,11 +122,13 @@ code {
     justify-content: space-around !important;
     text-align: center  ;
   }
+
   .aboutbg {
-    background-color: #121212; 
+    background-color: #b81f1f; 
     padding: 10px;
     border-radius: 10px; 
     color: #f3f3f3; 
+    font-size: 40px;
   }
   
   header{
@@ -115,12 +152,14 @@ code {
     justify-content: center !important;
     align-items: center;
   }
-  .mypic{
-    display: none;
-  }
-  .pic{
-    display: none;
-  }
+.mypic{
+  margin-left: 0;
+  transform: translateX(13%);
+  padding-top: 40%;
+  width: 80%;
+  /* transform: translateY(90%); */
+}
+
   .skills{
     transition: none !important;
     transform: none !important;;
@@ -133,7 +172,7 @@ code {
   }
   .aboutcard{
     transition: none !important;
-    transform: none !important;;
+    transform: none !important;
     /* transition: "transform 0.3s ease-in-out", */
   }
   .main{
@@ -193,16 +232,11 @@ code {
     font-size: 4rem;
   }
 
-  .aboutcard h1,
-  .aboutcard .text-white {
-    text-align: center;
-  }
+.nametitle{
+      text-align: center;
+    }
 
-  .aboutcard img {
-    top: 14%;
-    left: 60%;
-    width: 35%;
-  }
+
 
   .skills h1 {
     margin-top: 1%;
@@ -292,21 +326,82 @@ code {
       justify-content: center !important;
       text-align: center !important;
       align-items: center !important;
+      font-size: 30px;
       /* transform: translateX(4%) !important; */
+      padding-left: 9%;
+      width: 90%;
+      margin-bottom: 30%;
       
     }
   .mytext{
     transform: translateX(-2%) !important;
 
   }
-  
+  .nametitle{
+    font-size: 35px !important;
+    text-decoration: underline #b81f1f;
+  }
+  .nametitle2{
+    display: none;
+  }
+  .nametitle3{
+    font-size: 20px !important;
+  }
+  .home{
+    font-size: 150%;
+  }
+  .aboutLink{
+    font-size: 150%;
+
+  }  
+  .contactLink{
+    font-size: 150%;
+
+  }  
+  .cvLink{
+    font-size: 150%;
+
+  }  
+  .skillsLink{
+    font-size: 150%;
+
+  }
+  nav{
+    justify-content: center ;
+    transform: translateX(3%);
+  }
+  .nametitle3{
+    font-size: 18px !important;
+  }
+  #mytext{
+    margin-top: -12%;
+  }
+  #about{
+    margin-top: 60%;
+  }
+  #skills{
+    margin-top: 50%;
+
+  }
+  .home{
+    margin-right: 0;
+  }
+  .nav{
+    margin: 0;
+  }
 }
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
   body {
     background-size: cover;
+  overflow-x: hidden;
+
   }
   .home{
     margin: 0;
+  }
+  .skill-card{
+    transition: none !important;
+    transform: none !important;
   }
   .skills{
     display: flex !important;
@@ -318,7 +413,7 @@ code {
   .mypic{
     display: none;
   }
-  
+
   header nav {
     justify-content: center;
     padding: 2%;
@@ -501,14 +596,63 @@ code {
   footer .text-center h1 {
     font-size: 1.5rem;
   }
-}
-@media only screen and (min-width: 1024px) and (max-width: 1999px){
-  .mypic{
-    display: none;
+  #mytext{
+    font-size:50px ;
+    margin-bottom: 2%;
   }
+    .nametitle{
+    font-size: 40px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px){
+
+
   .skills{
     transition: none !important;
     transform: none !important;;
 
+  }
+  .foot{
+    text-align: center !important;
+    justify-content: center !important;
+    flex-direction: column;
+  }
+    .nametitle{
+    font-size: 40px;
+  }
+  .pic{
+    top: 10%;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .main{
+    text-align: center;
+  }
+  #mytext{
+    font-size:50px ;
+    margin-bottom: 2%;
+    /* margin: 0; */
+    transform: translateX(-8%);
+  }
+  .field-card{
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center;
+    /* margin-left: -5%; */
+
+  }
+  .aboutbg{
+      background-color: #b81f1f;
+      text-align: center;
+      font-size: 35px;
+
+  }
+  .nametitle{
+    text-align: center;
+
+  }
+  .nametitle3{
+    text-align: left;
+    font-size: 30px;
   }
 }
