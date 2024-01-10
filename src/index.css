@@ -73,11 +73,7 @@ code {
     width: 100%;
   }
 }
-.loader{
-  position: absolute;
-  top:100%;
-  left:48%
-}
+
 .aboutcard{
   background-color: black;
 }
@@ -91,8 +87,13 @@ code {
     overflow-x: hidden !important;
     margin: 0;
 
+    
 
-
+  }
+  
+  .loader{
+    position:absolute ;
+transform: translateY(130%) !important;
   }
   .main-child{
     justify-content: center;
