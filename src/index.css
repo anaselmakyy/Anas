@@ -50,7 +50,7 @@ code {
 
 
 .typing-animation::before {
-  content: "Hi, I'm Ayoub El Ouarzazi, a 21-year-old Cyber Security Specialist dedicated";
+  content: "";
   display: block;
   overflow: hidden;
   border-right: .15em solid rgb(255, 0, 0);
@@ -60,7 +60,7 @@ code {
 }
 
 .typing-animation::after {
-  content: "to safeguarding digital landscapes and ensuring robust online security";
+  content: "Cybersecurity is not just about technology; it's fundamentally a matter of trust.";
   display: block;
   overflow: hidden;
   border-right: .15em solid rgb(255, 0, 0);

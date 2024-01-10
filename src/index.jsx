@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { skills } from "./skills";
 import { Link, animateScroll as scroll } from "react-scroll";
-
+import {Analytics} from '@vercel/analytics/react'
 
 import './index.css'
 const Loader = () => <div className="loader"></div>;
@@ -16,24 +16,50 @@ export default function App() {
   useEffect(() => {
     const handleAboutScroll = () => {
       const aboutLinks = document.getElementsByClassName("aboutLink");
+      const skillsLinks = document.getElementsByClassName("skillsLink");
   
       const numberheight = window.scrollY;
   
       if (numberheight >= 180 && numberheight < 1200) {
-        setAbout(3000 - 3000);
+        setAbout(7000 - 7000);
         setOpacity(1);
   
         for (let i = 0; i < aboutLinks.length; i++) {
-          aboutLinks[i].style.color = "red";
+          aboutLinks[i].style.color = "white";
+          aboutLinks[i].style.borderBottom = "4px solid";
+          skillsLinks[i].style.borderBottom = "0px solid";
+          aboutLinks[i].addEventListener("mouseover", function () {
+            this.style.borderBottom = "4px solid white";
+            // Add other hover styles as needed
+          });
+        
+          // Remove hover effect on mouseout
+          aboutLinks[i].addEventListener("mouseout", function () {
+            this.style.borderBottom = "4px solid ";
+            // Reset other styles if needed
+          })
+
         
         }
       } else {
-        setAbout(3000);
+        setAbout(7000);
         setOpacity(0);
   
         for (let i = 0; i < aboutLinks.length; i++) {
-          aboutLinks[i].style.color = "white";
+          aboutLinks[i].style.color = "#dc2626";
+          aboutLinks[i].style.borderBottom = "0px solid";
+          aboutLinks[i].addEventListener("mouseover", function () {
+            this.style.borderBottom = "4px solid white";
+            // Add other hover styles as needed
+          });
+        
+          // Remove hover effect on mouseout
+          aboutLinks[i].addEventListener("mouseout", function () {
+            this.style.borderBottom = "0px solid ";
+            // Reset other styles if needed
+          });
         }
+        
       }
     };
   
@@ -53,13 +79,26 @@ export default function App() {
   
       const numberheight = window.scrollY;
   
-      if (numberheight >= 2100 && numberheight < 3000) {
+      if (numberheight >=2000 && numberheight<2300) {
         // setAbout(3000 - 3000);
         // setOpacity(1);
   
         for (let i = 0; i < contactLinks.length; i++) {
-          contactLinks[i].style.color = "red";
-          skillsLinks[i].style.color = "white";
+          contactLinks[i].style.color = "white";
+          skillsLinks[i].style.color = "#dc2626";
+          contactLinks[i].style.borderBottom = "4px solid";
+          skillsLinks[i].style.borderBottom = "0px solid";
+          contactLinks[i].addEventListener("mouseover", function () {
+            this.style.borderBottom = "4px solid white";
+            // Add other hover styles as needed
+          });
+        
+          // Remove hover effect on mouseout
+          contactLinks[i].addEventListener("mouseout", function () {
+            this.style.borderBottom = "4px solid ";
+            // Reset other styles if needed
+          })
+
         
         }
 
@@ -68,15 +107,36 @@ export default function App() {
 
         for (let i = 0; i < contactLinks.length; i++) {
           // contactLinks[i].style.color = "red";
-          skillsLinks[i].style.color = "red";
+          skillsLinks[i].style.color = "white";
+          skillsLinks[i].style.borderBottom = "4px solid";          
+          contactLinks[i].style.color = "#dc2626";          
+          contactLinks[i].style.borderBottom = "0px solid";
+          
+
         
         }
       }
       else {
   
         for (let i = 0; i < contactLinks.length; i++) {
-          contactLinks[i].style.color = "white";
+          contactLinks[i].style.color = "#dc2626";
           // skillsLinks[i].style.color = "red";
+          contactLinks[i].style.borderBottom = "0px solid";
+          contactLinks[i].style.color = "#dc2626";
+          contactLinks[i].style.borderBottom = "0px solid";
+          contactLinks[i].addEventListener("mouseover", function () {
+            this.style.borderBottom = "4px solid white";
+            // Add other hover styles as needed
+          });
+        
+          // Remove hover effect on mouseout
+          contactLinks[i].addEventListener("mouseout", function () {
+            this.style.borderBottom = "0px solid ";
+            // Reset other styles if needed
+          });
+          contactLinks[i].style.color ="#dc2626";
+          contactLinks[i].style.borderBottom ="0px solid";
+          
         }
       }
     };
@@ -92,19 +152,49 @@ export default function App() {
   }, [window.scrollY]);
   useEffect(()=>{
     const skillsLinks = document.getElementsByClassName("skillsLink");
+    const contactLinks = document.getElementsByClassName("contactLink");
     const numberheight = window.scrollY
     if(numberheight>=1200 && numberheight<2000){    
-        setskills(3000-3000)
+        setskills(7000-7000)
 
         for (let i = 0; i < skillsLinks.length; i++) {
-          skillsLinks[i].style.color = "red";
+          skillsLinks[i].style.color = "white";
+          skillsLinks[i].style.borderBottom = "4px solid";
+          skillsLinks[i].addEventListener("mouseover", function () {
+            this.style.borderBottom = "4px solid white";
+            // Add other hover styles as needed
+          });
         
+          // Remove hover effect on mouseout
+          skillsLinks[i].addEventListener("mouseout", function () {
+            this.style.borderBottom = "4px solid ";
+            // Reset other styles if needed
+          })
+
         }
   }
+  // if(numberheight<1200 || numberheight>1900){
+  //   for (let i = 0; i < skillsLinks.length; i++) {
+  //     skillsLinks[i].style.color = "#dc2626";
+
+  //   }
+  // }
   else{
-    setskills(3000)
+    setskills(7000)
     for (let i = 0; i < skillsLinks.length; i++) {
-      skillsLinks[i].style.color = "white";
+      skillsLinks[i].style.color = "#dc2626";
+      skillsLinks[i].style.color = "#dc2626";
+      skillsLinks[i].style.borderBottom = "0px solid";
+      skillsLinks[i].addEventListener("mouseover", function () {
+        this.style.borderBottom = "4px solid white";
+        // Add other hover styles as needed
+      });
+    
+      // Remove hover effect on mouseout
+      skillsLinks[i].addEventListener("mouseout", function () {
+        this.style.borderBottom = "0px solid ";
+        // Reset other styles if needed
+      });
     }
   }
   },[window.scrollY])
@@ -114,12 +204,12 @@ export default function App() {
     const handleScroll = () => {
       const numberheight = window.scrollY
       if(numberheight>=0 && numberheight<410){    
-          setScrollPos(3000-3000)
+          setScrollPos(7000-7000)
           
           }
     
     else{
-      setScrollPos(3000)
+      setScrollPos(7000)
     };
   }
 
@@ -161,6 +251,7 @@ export default function App() {
 
   return (
     <div>
+      Plausible
       {loading && <Loader />} 
       {!loading && (
         <div>
@@ -172,7 +263,7 @@ export default function App() {
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className="text-neutral-50 text-3xl font-mono decoration-solid mr-[49%] cursor-pointer  home"
+                  className="text-neutral-50 border-b-4 border-red-600 text-3xl font-mono decoration-solid mr-[49%] cursor-pointer  home"
                   onClick={scrollToPexels}
                 >
                   MY PORTFOLIO
@@ -183,7 +274,7 @@ export default function App() {
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className="text-neutral-50 text-3xl  font-mono border-red-600 hover:border-b-4 decoration-solid mr-[4%] cursor-pointer  aboutLink"
+                  className="text-red-600 text-3xl  font-mono border-white hover:border-b-4 decoration-solid mr-[4%] cursor-pointer  aboutLink"
                 >
                   ABOUT
                 </Link>
@@ -193,7 +284,7 @@ export default function App() {
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className="text-neutral-50 text-3xl font-mono border-red-600  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer skillsLink"
+                  className="text-red-600 text-3xl font-mono border-white  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer skillsLink"
                 >
                   SKILLS
                 </Link>
@@ -203,13 +294,14 @@ export default function App() {
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className="text-neutral-50 text-3xl font-mono border-red-600  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer contactLink"
+                  className="text-red-600 text-3xl font-mono border-white  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer contactLink"
                 >
                   CONTACT
-                </Link>{" "}
+                </Link>
                 <a
-                  href="https://drive.google.com/file/d/1imQoZnbDIItiVCaLSUAEDnkgNVL44bdG/view"
-                  className="text-neutral-50 text-3xl font-mono border-red-600  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer cvLink"
+                  target="_blank"
+                  href="https://drive.google.com/file/d/1_-qi-ua1tZ3yIgfVAG0jQbhGAMtt5rQa/view?usp=sharing"
+                  className="text-red-600 text-3xl font-mono border-white  hover:border-b-4 decoration-solid mr-[4%] cursor-pointer cvLink"
                 >
                   MY CV
                 </a>
@@ -230,7 +322,8 @@ export default function App() {
                 </p>
               </div>
               <div className="flex flex-row flex-wrap main-child">
-                <p className="text-neutral-50 font-mono text-2xl ml-[9%] mt-[1%]  typing-animation parag"></p>
+              <p className="text-neutral-50 font-mono text-2xl ml-[9%] mt-[1%] flex-wrap  typing-animation parag"></p>
+              {/* <p className="text-neutral-50 font-mono text-2xl ml-[9%] mt-[1%] parag2"></p> */}
                 <img
                   src="/pclogo.png"
                   alt=""
@@ -329,11 +422,11 @@ export default function App() {
             </div>
             <div className="flex flex-row justify-center mt-[4%] icons">
 
-              <a href="https://github.com/XW4NT3DX" className="pr-[2%]">
+              <a  target="_blank" href="https://github.com/XW4NT3DX" className="pr-[2%]">
                 <img src="./github.png" alt="" className="w-[60px] h-[60px] " />
               </a>
 
-              <a href="https://www.linkedin.com/in/ayoub-el-ouarzazi-255b1a280/">
+              <a  target="_blank" href="https://www.linkedin.com/in/ayoub-el-ouarzazi-255b1a280/">
                 <img
                   src="./linkedin.png"
                   alt=""
@@ -344,13 +437,14 @@ export default function App() {
             <hr className="mt-[3%] ml-[10%] mr-[10%] bg-black"/>
             <div className="text-center mt-10">
       <p className="text-neutral-400 text-lg">REALISED BY</p>
-      <h1 className="text-white text-3xl font-bold"><a href="https://www.linkedin.com/in/anas-el-maky-360257262/">ANAS EL MAKY</a></h1>
+      <h1 className="text-white text-3xl font-bold"><a target="_blank" href="https://www.linkedin.com/in/anas-el-maky-360257262/">ANAS EL MAKY</a></h1>
       <p>© 2024 ALL RIGHTS RESERVED</p>
     </div>
             
           </footer>
         </div>
       )}
+      <Analytics />
     </div>
   );
 }
