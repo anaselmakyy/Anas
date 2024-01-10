@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { skills } from "./skills";
 import { Link, animateScroll as scroll } from "react-scroll";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from '@vercel/analytics/react';
+
 
 import './index.css'
 const Loader = () => <div className="loader"></div>;
